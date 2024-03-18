@@ -10,9 +10,9 @@ app.post('/bfhl', (req, res) => {
     try {
         const data = req.body;
 
-        const user_id = data.user_id;
-        const email = data.email;
-        const roll_number = data.roll_number;
+        const user_id = data.user_id || "gaurav_thakur"; 
+        const email = data.email || "gaurav1291.be21@chitkarauniversity.edu.in";
+        const roll_number = data.roll_number || "2111981291";
         const odd_numbers = [];
         const even_numbers = [];
         const alphabets = [];
