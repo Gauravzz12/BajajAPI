@@ -8,15 +8,16 @@ let response = {};
 
 app.post('/bfhl', (req, res) => {
     try {
-        const data = req.body.data;
-        const user_id = "john_doe_17091999";
-        const email = "john.doe@example.com";
-        const roll_number = "2111981291";
+        const data = req.body;
+
+        const user_id = data.user_id;
+        const email = data.email;
+        const roll_number = data.roll_number;
         const odd_numbers = [];
         const even_numbers = [];
         const alphabets = [];
 
-        data.forEach(element => {
+        data.data.forEach(element => {
             if (typeof element === 'string' && isNaN(element)) {
                 alphabets.push(element.toUpperCase());
             } else if (!isNaN(element)) {
