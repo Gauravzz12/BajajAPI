@@ -3,19 +3,25 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
-
-let response = {};
-
+app.get('/',(req,res)=>{
+    res.write("Hello World");
+    res.end();
+})
+let response={
+};
+app.get('/bfhl',(req,res)=>{
+    let list=JSON.stringify(response);
+    res.write(list);
+    res.end();
+})
 app.post('/bfhl', (req, res) => {
-    try {
         const data = req.body.data;
-        const user_id = "john_doe_17091999";
-        const email = "john.doe@example.com";
+        const user_id = "gaurav_thakur";
+        const email = "gaurav1291.be21@chitkarauniversity.edu.in";
         const roll_number = "2111981291";
         const odd_numbers = [];
         const even_numbers = [];
         const alphabets = [];
-
         data.forEach(element => {
             if (typeof element === 'string' && isNaN(element)) {
                 alphabets.push(element.toUpperCase());
@@ -28,6 +34,7 @@ app.post('/bfhl', (req, res) => {
             }
         });
 
+
         response = {
             is_success: true,
             user_id: user_id,
@@ -37,15 +44,11 @@ app.post('/bfhl', (req, res) => {
             even_numbers: even_numbers,
             alphabets: alphabets
         };
-
         res.json(response);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
 });
 
-const PORT = 3000;
+
+const PORT =  3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
